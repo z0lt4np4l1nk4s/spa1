@@ -36,7 +36,7 @@ void selectionSort(int* arr, int n)
         {
             if(arr[j] < arr[min]) min = j;
         }
-        swap(arr[i], arr[min]);
+        if(i != min) swap(arr[i], arr[min]);
     }
 }
 
