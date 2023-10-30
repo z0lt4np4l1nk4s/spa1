@@ -41,7 +41,7 @@ int find_max(vector<int> V)
         cout << "Can't find max element in empty array!" << endl;
         return -1;
     }
-    cout << "Array ";
+    cout << "Array: ";
     printArray(V);
 
     int max = binary_search(V);
@@ -70,6 +70,15 @@ int main()
 
     vector<int> V6 {1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1 ,0};
     find_max(V6);
+
+    vector<int> V7 {8};
+    find_max(V7);
+
+    vector<int> V8 {10, 7};
+    find_max(V8);
+
+    vector<int> V9 {1, 100};
+    find_max(V9);
 
     return 0;
 }

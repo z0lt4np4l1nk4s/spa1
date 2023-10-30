@@ -5,6 +5,8 @@ using namespace std;
 
 bool canSplit(const vector<int>& V, int k, int maxSum)
 {
+    // calculating the number of subarrays we can make such 
+    // that their sum is less than the given maximum sum
     int subArrayCount = 1;
     int currentSum = 0;
 
@@ -23,25 +25,32 @@ bool canSplit(const vector<int>& V, int k, int maxSum)
 
 int find_sum(const vector<int>& V, int k)
 {
-    int l = V[0];
-    int r = V[0];
+    //looking for the maximum element in the array for the lower limit
+    int start = V[0];
+    //looking for the sum of all elements in the array for the upper limit
+    int end = V[0];
     for(int i = 1; i < V.size(); i++)
     {
-        l = max(l, V[i]);
-        r += V[i];
+        start = max(start, V[i]);
+        end += V[i];
     }
 
-    while(l < r)
+    while(start < end)
     {
-        int mid = l + (r - l) / 2;
-        if(canSplit(V, k, mid)) 
+        int middle = start + (end - start) / 2;
+        if(canSplit(V, k, middle)) 
         {
-            r = mid;
+            // if the array can be split into k or less pieces, such that all the sums of 
+            // subarrays are less than the current minimum maximum sum (middle)
+            // then we have a new minimum maximum sum,
+            // so we change the upper limit
+            end = middle;
         }
-        else l = mid + 1;
+        //otherwise we change the lower limit
+        else start = middle + 1;
     }
 
-    return l;
+    return start;
 }
 
 int main()

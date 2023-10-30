@@ -13,6 +13,8 @@ int partition(vector<int>& V, int start, int end)
 
     int index = start;
 
+    //moving all the items that are smaller than the pivot to the left
+    //and the items that are greater or equal than the pivot to the right
     for(int j = index + 1; j <= end; j++)
     {
         if(V[j] < pivot)
@@ -53,31 +55,46 @@ void printArray(const vector<int>& V)
     cout << endl;
 }
 
+bool checkIfSorted(vector<int>& V)
+{
+    for(int i = 1; i < V.size(); i++)
+    {
+        if(V[i - 1] > V[i]) return false;
+    }
+
+    return true;
+}
+
+void sortArray(vector<int>& V)
+{
+    cout << "Initial array: ";
+    printArray(V);
+
+    quickSort(V);
+    
+    cout << "Sorted array: ";
+    printArray(V);
+
+    bool isSorted = checkIfSorted(V);
+    cout << "The array is " << (isSorted ? "" : "not ") << "sorted!" << endl << endl;
+}
+
 int main()
 {
     vector<int> V{1, 17, 7, 22, 2, 14, 9, 8, 11, 1, -5, 10, -12, -7, 8, 9, 28};
-
-    printArray(V);
-    quickSort(V);
-    printArray(V);
-
-    cout << endl;
+    sortArray(V);
 
     vector<int> V1{10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-
-    printArray(V1);
-    quickSort(V1);
-    printArray(V1);
-
-    cout << endl;
+    sortArray(V1);
 
     vector<int> V2{2, 1, 3};
+    sortArray(V2);
 
-    printArray(V2);
-    quickSort(V2);
-    printArray(V2);
+    vector<int> V3{4};
+    sortArray(V3);
 
-    cout << endl;
+    vector<int> V4{1, 2, 3, 4, 5, 6};
+    sortArray(V4);
 
     //Quick sort is a varying algorithm. In the worst-case the complexity is O(n^2)
     //whilst the average and base case scenario is O(n log(n)). The complexity depends on the input.

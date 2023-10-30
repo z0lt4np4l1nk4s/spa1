@@ -1,3 +1,6 @@
+//online task
+//https://cses.fi/problemset/task/1722
+
 #include <iostream>
 #include <vector>
 
@@ -6,6 +9,9 @@ using namespace std;
 using ll = long long;
 using matrix = vector<vector<ll>>;
 
+//2x2
+//1 1
+//1 0
 matrix baseMatrix = { vector<ll>{1, 1}, vector<ll>{1, 0} };
 
 matrix multiplyMatrix(const matrix& A, const matrix& B)
@@ -64,22 +70,10 @@ ll fibonacci(ll n)
     return res[0][1];
 }
 
-void printMatrix(const matrix& A)
-{
-    for(int i = 0; i < A.size(); i++)
-    {
-        for(int j = 0; j < A[i].size(); j++)
-        {
-            cout << A[i][j] << " ";
-        }
-        cout << endl;
-    }
-}
-
-void expect(ll input, ll expectedValue)
+void expect(ll input, ll expectedResult)
 {
     ll result = fibonacci(input);
-    cout << "Input: " << input << ", Result: " << result << ", Valid: " << (result == expectedValue) << endl;
+    cout << "Input: " << input << ", Result: " << result << ", Valid: " << (result == expectedResult) << endl;
 }
 
 int main()
